@@ -53,3 +53,39 @@ Sorted -> ['b', 'd', 'e', 'h', 'k', 'm', 'n',
 =================================================
 
 """
+# write your code here
+
+def alphabets_never_back_to_back(filename):
+
+    seen = set()
+    doubled = set()
+
+    try:
+        with open(filename, "r") as file:
+
+            for word in file:
+                word = word.strip().lower()
+
+                # Add all letters to seen set
+                for ch in word:
+                    if ch.isalpha():
+                        seen.add(ch)
+
+                # Check for consecutive repeated letters
+                for i in range(len(word) - 1):
+                    if word[i] == word[i + 1]:
+                        doubled.add(word[i])
+
+        result = sorted(list(seen - doubled))
+
+        print("Letters that never appear back-to-back:")
+        print(result)
+
+    except FileNotFoundError:
+        print("File not found")
+
+
+# User input
+filename = input("Enter file name: ")
+
+alphabets_never_back_to_back(filename)
