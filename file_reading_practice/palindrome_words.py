@@ -51,3 +51,37 @@ Explanation:
 =================================================
 
 """
+# write your code here
+
+def is_palindrome(word):
+
+    word = word.lower()
+
+    return word == word[::-1]
+
+
+def find_palindromes(filename):
+
+    count = 0
+
+    try:
+        with open(filename, "r") as file:
+
+            for word in file:
+
+                word = word.strip()
+
+                if is_palindrome(word):
+                    print(word)
+                    count += 1
+
+        print("Total palindromes:", count)
+
+    except FileNotFoundError:
+        print("File not found")
+
+
+# User input
+filename = input("Enter file name: ")
+
+find_palindromes(filename)
