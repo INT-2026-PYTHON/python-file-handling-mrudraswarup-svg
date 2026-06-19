@@ -58,3 +58,39 @@ After sorting -> ['a', 'compare', 'i', 'to'].
 =================================================
 
 """
+#write your code here
+
+def words_unique_to_sonnet(sowpods_file, sonnet_file):
+
+    try:
+        # Read words from sowpods.txt
+        with open(sowpods_file, "r") as file:
+            sowpods_words = set()
+
+            for word in file:
+                sowpods_words.add(word.strip().lower())
+
+        # Read words from sonnet_words.txt
+        with open(sonnet_file, "r") as file:
+            sonnet_words = set()
+
+            for word in file:
+                sonnet_words.add(word.strip().lower())
+
+        # Find words in sonnet but not in sowpods
+        unique_words = sorted(list(sonnet_words - sowpods_words))
+
+        print("Words in sonnet but not in sowpods:")
+        print(unique_words)
+
+        print("Total:", len(unique_words))
+
+    except FileNotFoundError:
+        print("One or both files not found")
+
+
+# User Input
+sowpods_file = input("Enter sowpods file name: ")
+sonnet_file = input("Enter sonnet file name: ")
+
+words_unique_to_sonnet(sowpods_file, sonnet_file)
