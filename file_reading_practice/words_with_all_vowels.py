@@ -40,3 +40,32 @@ Explanation:
 =================================================
 
 """
+# write your code here
+
+def words_with_all_vowels(filename):
+
+    vowels = {'a', 'e', 'i', 'o', 'u'}
+    count = 0
+
+    try:
+        with open(filename, "r") as file:
+
+            for word in file:
+                word = word.strip().lower()
+
+                word_letters = set(word)
+
+                if vowels.issubset(word_letters):
+                    print(word)
+                    count += 1
+
+        print("Total words with all vowels:", count)
+
+    except FileNotFoundError:
+        print("File not found")
+
+
+# User input
+filename = input("Enter file name: ")
+
+words_with_all_vowels(filename)
